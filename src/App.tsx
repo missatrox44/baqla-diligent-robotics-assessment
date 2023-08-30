@@ -1,15 +1,19 @@
-import './App.css'
+import React from 'react';
+import './App.css';
 
-function App() {
-
-
+const App: React.FC = () => {
   return (
     <>
-     <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <select className="w-[600px] h-[60px] border border-[#1AA2B0] rounded-[6px] px-3 mt-[285px]">
+        <option value="">Select a product</option>
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+        <option value="Option 4">Option 4</option>
+      </select>
+      <p className="mt-[200px]">No product selected</p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

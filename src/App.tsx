@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import ProductDetails from './components/ProductDetails';
 
 type Product = {
   id: string;
@@ -14,7 +15,7 @@ const App: React.FC = () => {
       .then(response => response.json())
       .then(data => setProducts(data.products))
       .catch(error => console.error("Error fetching products:", error));
-    console.log("products:", products)
+    // console.log("products:", products)
   }, []);
 
   return (
@@ -26,6 +27,7 @@ const App: React.FC = () => {
         ))}
       </select>
       <p className="mt-[200px]">No product selected</p>
+      <ProductDetails/>
     </>
   );
 }

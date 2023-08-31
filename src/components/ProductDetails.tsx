@@ -15,8 +15,8 @@ interface ProductDetailsProps {
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   return (
-    <div className="grid grid-cols-2 mt-[156px]">
-      <div>
+    <div className="grid grid-cols-2 mt-[156px] max-w-xl gap-4">
+      <div className="flex flex-col justify-center items-end">
         <img
           src={product.thumbnail}
           alt={product.title}
@@ -32,7 +32,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           </span>
         </div>
         <p className="text-left leading-10 text-sm">{product.brand}</p>
-        <p className="text-left text-white text-3xl font-bold">${product.price}</p>
+        <p className="text-left text-white text-3xl font-bold">${product.price}.00</p>
         <p className="text-left text-white leading-10 text-sm">{product.description}</p>
       </div>
     </div>

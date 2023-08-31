@@ -48,7 +48,7 @@ const App: React.FC = () => {
         ))}
       </select>
 
-      {selectedProduct ? <ProductDetails product={selectedProduct} /> : <p className="mt-[200px]">No product selected</p>}
+      {selectedProduct ? <ProductDetails product={selectedProduct} /> : <p className="mt-[200px] text-center">No product selected</p>}
 
     </>
   );

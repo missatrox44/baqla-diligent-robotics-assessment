@@ -1,13 +1,5 @@
 import React from 'react';
-
-interface Product {
-  thumbnail: string;
-  title: string;
-  category: string;
-  brand: string;
-  price: number;
-  description: string;
-}
+import { Product } from '../types/types';  
 
 interface ProductDetailsProps {
   product: Product;

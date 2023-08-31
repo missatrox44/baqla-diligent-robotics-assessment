@@ -39,6 +39,7 @@ const App: React.FC = () => {
   return (
     <>
       <select
+        style={{ backgroundColor: "#1E1D2D" }}
         className="w-[600px] h-[60px] border border-[#1AA2B0] rounded-[6px] px-3 mt-[285px]"
         onChange={handleProductChange}
       >

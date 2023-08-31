@@ -27,7 +27,7 @@ body {
 }
 
 /* not sure why this style is not applying */
-/* .img {
+.img {
   border: 1px solid #1AA2B0 !important;
   border-radius: 10px;
-} */
+}

@@ -1,5 +1,8 @@
 # Baqla Diligent Robotics Assessment
 
+
+## [Deployed Link](https://baqla-diligent-robotics-assessment.vercel.app/)
+
 ## Setup and Run the baqla-diligent-robotics-assessment App
 
 Follow the steps below to set up the app on your local machine:

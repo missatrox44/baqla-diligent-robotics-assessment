@@ -1,27 +1,50 @@
-# React + TypeScript + Vite
+# Baqla Diligent Robotics Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Setup and Run the baqla-diligent-robotics-assessment App
 
-Currently, two official plugins are available:
+Follow the steps below to set up the app on your local machine:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clone the Repository**  
+   Start by cloning the repo to your local machine:
+   ```
+   git clone git@github.com:missatrox44/baqla-diligent-robotics-assessment.git
+   ```
 
-## Expanding the ESLint configuration
+2. **Navigate to the Directory**  
+   Once cloned, move to the project's root directory:
+   ```
+   cd baqla-diligent-robotics-assessment
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+3. **Install Dependencies**  
+   Install all necessary npm packages:
+   ```
+   npm install
+   ```
 
-- Configure the top-level `parserOptions` property like this:
+4. **Start the Development Server**  
+   Run the development server using:
+   ```
+   npm run dev
+   ```
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+5. **Open the App in Your Browser**  
+   After starting the development server, you should see a link in the terminal. Click on it, or manually navigate to `http://127.0.0.1:5173/` in your web browser. The React app should now be running on your localhost.
+   
+   <br/>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Using the App
+The app provides a straightforward interface to view product details. Here's how to use it:
+
+### 1. **Select a Product**
+   - Upon opening the app, you'll find a dropdown menu at the center of the page.
+   - Click on the dropdown to see a list of available products.
+   - Navigate through the list and select the product of interest.
+
+### 2. **View Product Details**
+   - Immediately after selecting a product, a 'Product Details' card will appear on the screen.
+   - This card presents essential information about the chosen product, such as its name, description, price, and other relevant details.
+
+**Tip:** The interface is designed to be intuitive. If you wish to view details of another product, simply return to the dropdown menu and make another selection.
+
+![app demo gif](./public/demo.gif)

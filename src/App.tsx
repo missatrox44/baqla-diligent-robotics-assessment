@@ -2,27 +2,39 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import ProductDetails from './components/ProductDetails';
 
-type Product = {
-  id: string;
+
+interface Product {
+  id: number;
   title: string;
-};
+  thumbnail: string;
+  category: string;
+  brand: string;
+  price: number;
+  description: string;
+}
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
 
   useEffect(() => {
     fetch('https://dummyjson.com/products')
       .then(response => response.json())
-      .then(data => setProducts(data.products))
+      .then(data => {
+        // console.log("API Response:", data);
+        setProducts(data.products)
+      })
       .catch(error => console.error("Error fetching products:", error));
-      // console.log("products:", products)
   }, []);
 
   const handleProductChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
-    setSelectedProduct(value ? value : null); 
+    const value = parseInt(event.target.value, 10);
+    const product = products.find(p => p.id === value);
+    // console.log("Selected Product:", product);
+    setSelectedProduct(product || null);
   };
+
 
   return (
     <>
@@ -36,7 +48,8 @@ const App: React.FC = () => {
         ))}
       </select>
 
-      {selectedProduct ? <ProductDetails /> : <p className="mt-[200px]">No product selected</p>}
+      {selectedProduct ? <ProductDetails product={selectedProduct} /> : <p className="mt-[200px]">No product selected</p>}
+
     </>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import ProductDetails from './components/ProductDetails';
 import { useSpring, animated } from 'react-spring';
-import Select, { components, DropdownIndicatorProps, Props as SelectProps } from 'react-select';
+import Select, { components, DropdownIndicatorProps } from 'react-select';
 
 interface Product {
   id: number;
@@ -19,7 +19,11 @@ interface ProductOption {
   label: string;
 }
 
-// Custom Dropdown Indicator
+interface OptionState {
+  isSelected: boolean;
+  isFocused: boolean;
+}
+
 const CustomDropdownIndicator = (props: DropdownIndicatorProps) => {
   return (
     components.DropdownIndicator && (
@@ -41,19 +45,17 @@ const customStyles = {
     color: '#1AA2B0',
     width: '600px'
   }),
-  option: (base: unknown, state: object) => ({
+  option: (base: object, state: OptionState) => ({
     ...base,
     backgroundColor: state.isSelected || state.isFocused ? '#1AA2B0' : '#1E1D2D',
     color: state.isSelected || state.isFocused ? '#1E1D2D' : '#1AA2B0',
     fontWeight: 'bold',
     lineHeight: '30px',
-}),
-
+  }),
   singleValue: (base: object) => ({
     ...base,
     color: '#1AA2B0',
   }),
-
   menu: (base: object) => ({
     ...base,
     borderColor: '#1AA2B0',
@@ -64,14 +66,15 @@ const customStyles = {
   }),
   menuList: (base: object) => ({
     ...base,
-    overflowY: 'auto',
-    padding: 0, 
+    overflowY: 'auto' as const,
+    padding: 0,
     '&::-webkit-scrollbar': {
       width: 0,
       background: 'transparent',
     },
   }),
 };
+
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -100,33 +103,36 @@ const App: React.FC = () => {
   }));
 
   const handleSelectProductChange = (selectedOption: ProductOption | null) => {
-    const product = products.find(p => p.id === selectedOption.value);
-    setSelectedProduct(product || null);
+    if (selectedOption) {
+      const product = products.find(p => p.id === selectedOption.value);
+      setSelectedProduct(product || null);
 
-    if (product) {
-      // animate Product Details card
-      setDetailsAnimation({
-        opacity: 1,
-        transform: 'translateY(0px)',
-        from: { opacity: 0, transform: 'translateY(30px)' },
-      });
-    } else {
-      // add movement to "no product selected" text
-      setNoProductAnimation({
-        opacity: 1,
-        transform: 'scale(1)',
-        from: { opacity: 0, transform: 'scale(0.8)' },
-      });
+      if (product) {
+        // animate Product Details card
+        setDetailsAnimation({
+          opacity: 1,
+          transform: 'translateY(0px)',
+          from: { opacity: 0, transform: 'translateY(30px)' },
+        });
+      } else {
+        // add movement to "no product selected" text
+        setNoProductAnimation({
+          opacity: 1,
+          transform: 'scale(1)',
+          from: { opacity: 0, transform: 'scale(0.8)' },
+        });
+      }
     }
   };
 
+
   return (
     <>
-      <Select 
+      <Select
         styles={customStyles}
         components={{ DropdownIndicator: CustomDropdownIndicator, IndicatorSeparator: () => null }}
         options={products.map(product => ({ value: product.id, label: product.title }))}
-        onChange={handleSelectProductChange}
+        onChange={(value) => handleSelectProductChange(value as ProductOption | null)}
         placeholder="Select a product"
       />
 

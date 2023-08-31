@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductDetails: React.FC = () => {
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 mt-[156px]">
       <div>
         <img
           src="https://i.dummyjson.com/data/products/1/thumbnail.jpg"

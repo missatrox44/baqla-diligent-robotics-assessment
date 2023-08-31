@@ -20,12 +20,13 @@
 body {
   margin: 0;
   display: flex;
-  /* place-items: center; */
+  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
-/* .img {
-  border: 1 solid #1AA2B0;
+/* not sure why this style is not applying */
+.img {
+  border: 1px solid #1AA2B0 !important;
   border-radius: 10px;
-} */
+}
